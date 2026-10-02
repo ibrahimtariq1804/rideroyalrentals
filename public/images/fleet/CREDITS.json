@@ -1,0 +1,10 @@
+[
+  {
+    "note": "Fleet photos are operator-supplied inventory images from the Cars package. Filenames encode the vehicle name and model."
+  },
+  {
+    "slug": "*",
+    "source": "Operator inventory (Downloads/Cars)",
+    "license": "All rights reserved — supplied for RIDEROYALRENTALS use"
+  }
+]

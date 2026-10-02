@@ -1,0 +1,79 @@
+{
+  "asset": {
+    "file": "/models/lexus-lx600-obsidian-rigged.glb",
+    "color": "Obsidian black",
+    "sizeBytes": 32752584,
+    "triangles": 1254818,
+    "animationClip": "Open_All_Panels",
+    "rootRigNode": "LX600_Articulated_Panels"
+  },
+  "coordinateNotes": {
+    "instruction": "Animate each named node in its local coordinate space. Do not rotate child part nodes.",
+    "frontDirectionInRawSource": "-X",
+    "rearDirectionInRawSource": "+X",
+    "upInRawSource": "+Z"
+  },
+  "panels": {
+    "Door_FL": {
+      "property": "rotation.z",
+      "closedRadians": 0,
+      "openRadians": -1.1693705988362009,
+      "openDegrees": -67,
+      "selectedTriangles": 9439
+    },
+    "Door_FR": {
+      "property": "rotation.z",
+      "closedRadians": 0,
+      "openRadians": 1.1693705988362009,
+      "openDegrees": 67,
+      "selectedTriangles": 8933
+    },
+    "Door_RL": {
+      "property": "rotation.z",
+      "closedRadians": 0,
+      "openRadians": -1.117010721276371,
+      "openDegrees": -64,
+      "selectedTriangles": 8132
+    },
+    "Door_RR": {
+      "property": "rotation.z",
+      "closedRadians": 0,
+      "openRadians": 1.117010721276371,
+      "openDegrees": 64,
+      "selectedTriangles": 8112
+    },
+    "Hood": {
+      "property": "rotation.y",
+      "closedRadians": 0,
+      "openRadians": 0.9599310885968813,
+      "openDegrees": 55,
+      "selectedTriangles": 3614
+    },
+    "Tailgate": {
+      "property": "rotation.y",
+      "closedRadians": 0,
+      "openRadians": -1.1868238913561442,
+      "openDegrees": -68,
+      "selectedTriangles": 25168
+    }
+  },
+  "suggestedScrollStages": [
+    { "progress": [0, 0.14], "action": "Closed front introduction" },
+    { "progress": [0.14, 0.27], "action": "Camera to front three-quarter" },
+    { "progress": [0.27, 0.38], "action": "Open Door_FL" },
+    { "progress": [0.38, 0.47], "action": "Open Door_FR" },
+    { "progress": [0.47, 0.58], "action": "Open Door_RL and Door_RR with a stagger" },
+    { "progress": [0.58, 0.68], "action": "Interior detail; then close all doors" },
+    { "progress": [0.68, 0.78], "action": "Open and close Hood" },
+    { "progress": [0.78, 0.9], "action": "Orbit to rear and open Tailgate" },
+    { "progress": [0.9, 1], "action": "Close Tailgate and return to final three-quarter pose" }
+  ],
+  "verification": {
+    "inputTriangles": 1254818,
+    "outputTriangles": 1254818,
+    "triangleCountMatches": true,
+    "namedNodesPresent": true,
+    "animationChannels": 6,
+    "binaryBufferLengthValid": true
+  }
+}
