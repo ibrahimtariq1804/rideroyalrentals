@@ -120,6 +120,9 @@ export function ExpandingFleetGrid() {
   useScrollProgress(section, apply, !reduced)
   useSectionScrub(section, pin, !reduced)
 
+  const isSmallMobile = useMediaQuery('(max-width: 768px)')
+  if (isSmallMobile) return null
+
   return (
     <section ref={section} className={`expanding ${reduced ? 'is-static' : ''}`} aria-label="Fleet campaign grid">
       <div ref={pin} className="expanding-sticky">
