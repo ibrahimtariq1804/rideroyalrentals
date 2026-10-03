@@ -1,13 +1,11 @@
 import { useSearchParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
 import { bookingSchema, type BookingFormValues } from '@/data/bookingSchema'
-import { submitBooking } from '@/services/bookingService'
 import { buildWhatsAppUrl } from '@/services/whatsapp'
-import { categoryLabels } from '@/data/fleet'
+import { categoryLabels, vehicles } from '@/data/fleet'
 import { services } from '@/data/services'
-import { business, isBookingEndpointConfigured, isWhatsAppConfigured } from '@/data/business'
+import { business, isWhatsAppConfigured } from '@/data/business'
 import { Button } from '@/components/ui/Primitives'
 
 const defaults: BookingFormValues = {
@@ -30,8 +28,6 @@ const defaults: BookingFormValues = {
 
 export function BookingForm({ vehicleSlug }: { vehicleSlug?: string }) {
   const [params] = useSearchParams()
-  const [result, setResult] = useState<string | null>(null)
-  const [resultType, setResultType] = useState<'ok' | 'warn' | 'err'>('warn')
   const city = params.get('city') ?? ''
   const category = params.get('category') || 'sedan'
 
@@ -47,33 +43,7 @@ export function BookingForm({ vehicleSlug }: { vehicleSlug?: string }) {
     },
   })
 
-  const onSubmit = form.handleSubmit(async (values) => {
-    const payload = {
-      ...values,
-      phone: values.phone.replace(/[\s-]/g, ''),
-      consent: true as const,
-      email: values.email || undefined,
-      notes: values.notes || undefined,
-      vehicleSlug: values.vehicleSlug || vehicleSlug || undefined,
-    }
-    const response = await submitBooking(payload)
-    if (response.status === 'sent') {
-      setResultType('ok')
-      setResult('Request sent. We will reply on the number you gave.')
-      return
-    }
-    if (response.status === 'unconfigured') {
-      setResultType('warn')
-      setResult(
-        'Online submission is not configured yet (no VITE_BOOKING_ENDPOINT). Use WhatsApp once a business number is set, or email the operator directly.',
-      )
-      return
-    }
-    setResultType('err')
-    setResult(response.message)
-  })
-
-  const openWhatsApp = form.handleSubmit((values) => {
+  const onSubmit = form.handleSubmit((values) => {
     const url = buildWhatsAppUrl({
       ...values,
       phone: values.phone.replace(/[\s-]/g, ''),
@@ -113,6 +83,18 @@ export function BookingForm({ vehicleSlug }: { vehicleSlug?: string }) {
                 {label}
               </option>
             ))}
+          </select>
+        </div>
+        <div className="field">
+          <label htmlFor="vehicleSlug">Vehicle</label>
+          <select id="vehicleSlug" {...form.register('vehicleSlug')}>
+            <option value="">Any</option>
+            {vehicles.map((car) => (
+              <option key={car.slug} value={car.slug}>
+                {car.name} {car.ratePerDay ? `(PKR ${car.ratePerDay}/day)` : ''}
+              </option>
+            ))}
+            <option value="other">Other (Please specify in notes)</option>
           </select>
         </div>
         <div className="field">
@@ -171,23 +153,8 @@ export function BookingForm({ vehicleSlug }: { vehicleSlug?: string }) {
         {fieldError('consent') ? <span className="error">{fieldError('consent')}</span> : null}
       </div>
 
-      {result ? (
-        <p className={`notice ${resultType === 'warn' ? 'notice--warn' : ''}`} role="status">
-          {result}
-        </p>
-      ) : null}
-
-      {!isBookingEndpointConfigured ? (
-        <p className="notice notice--warn">
-          Online send needs `VITE_BOOKING_ENDPOINT`. No fake confirmation will be shown.
-        </p>
-      ) : null}
-
       <div className="hero-actions" style={{ marginTop: 20 }}>
-        <Button type="submit">Book online</Button>
-        <Button type="button" variant="ghost" disabled={!isWhatsAppConfigured} onClick={() => void openWhatsApp()}>
-          Continue on WhatsApp
-        </Button>
+        <Button type="submit" disabled={!isWhatsAppConfigured}>Send Inquiry via WhatsApp</Button>
       </div>
       {!isWhatsAppConfigured ? (
         <p className="meta" style={{ marginTop: 12 }}>

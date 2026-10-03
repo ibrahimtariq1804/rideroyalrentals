@@ -2,7 +2,7 @@ export const business = {
   name: import.meta.env.VITE_BUSINESS_NAME || 'RIDEROYALRENTALS',
   tagline: 'Rent without compromise.',
   market: 'Pakistan',
-  whatsAppNumber: (import.meta.env.VITE_WHATSAPP_NUMBER || '').replace(/\s+/g, ''),
+  whatsAppNumber: '+923354262912',
   bookingEndpoint: import.meta.env.VITE_BOOKING_ENDPOINT || '',
   mapsUrl: import.meta.env.VITE_GOOGLE_MAPS_URL || '',
   instagramUrl: import.meta.env.VITE_INSTAGRAM_URL || '',

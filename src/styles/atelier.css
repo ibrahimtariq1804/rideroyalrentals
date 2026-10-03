@@ -1003,3 +1003,6 @@
     align-items: start;
   }
 }
+
+.bento-card.is-feature .bento-media img { object-fit: contain; transform: scale(0.85); }
+
