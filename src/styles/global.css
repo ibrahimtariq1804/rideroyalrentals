@@ -3623,7 +3623,6 @@ p {
 
 /* Force dark-mode text colors on components that have hardcoded dark backgrounds in Light Theme */
 [data-theme='light'] .cta-pane-copy,
-[data-theme='light'] .story-copy,
 [data-theme='light'] .atelier-hero,
 [data-theme='light'] .fleet-card-media,
 [data-theme='light'] .ops-card-media {
@@ -3634,14 +3633,11 @@ p {
 }
 [data-theme='light'] .cta-pane-copy h2,
 [data-theme='light'] .cta-pane-copy p,
-[data-theme='light'] .story-copy h2,
-[data-theme='light'] .story-copy p,
 [data-theme='light'] .atelier-display,
 [data-theme='light'] .atelier-lede {
   color: var(--text-strong);
 }
 [data-theme='light'] .cta-pane-copy p,
-[data-theme='light'] .story-copy p,
 [data-theme='light'] .atelier-lede {
   color: var(--text);
 }
@@ -3658,4 +3654,5 @@ p {
 [data-theme='light'] .bento-card:not(.is-feature) .bento-meta p {
   color: var(--text-strong);
 }
+
 
