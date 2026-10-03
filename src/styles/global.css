@@ -3532,3 +3532,13 @@ p {
 .header-marquee .marquee { background: transparent; border: none; }
 .header-marquee .marquee-track { color: var(--accent); padding: 10px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; }
 
+
+@media (max-width: 768px) {
+  .bay {
+    display: none !important;
+  }
+  .corp-section {
+    padding-bottom: 20px !important;
+  }
+}
+

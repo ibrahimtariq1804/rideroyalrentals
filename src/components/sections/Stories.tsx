@@ -8,7 +8,7 @@ import { FleetImg } from '@/components/ui/Primitives'
 
 export function CorporateStory() {
   return (
-    <section className="section" aria-labelledby="corp-heading">
+    <section className="section corp-section" aria-labelledby="corp-heading">
       <Container>
         <div className="corp-split">
           <Reveal>
