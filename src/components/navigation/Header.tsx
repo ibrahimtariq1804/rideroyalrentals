@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { business, isWhatsAppConfigured } from '@/data/business'
 import { useLenis } from '@/context/LenisProvider'
 import { ThemeToggle } from '@/components/navigation/ThemeToggle'
+import { Marquee } from '@/components/animation/MotionBits'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -108,6 +109,10 @@ export function Header() {
           </div>
         </div>
       </header>
+
+      <div className="header-marquee" style={{ position: 'fixed', top: 'var(--header)', left: 0, right: 0, zIndex: 39, background: 'var(--accent)', color: 'var(--bg-ink)', opacity: 0.9 }}>
+        <Marquee items={[`Any question? Get in touch on WhatsApp: ${business.whatsAppNumber}`, `Any question? Get in touch on WhatsApp: ${business.whatsAppNumber}`, `Any question? Get in touch on WhatsApp: ${business.whatsAppNumber}`]} />
+      </div>
 
       <div
         className={`mobile-nav ${open ? 'is-open' : ''}`}
