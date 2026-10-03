@@ -176,7 +176,7 @@ p {
 }
 
 .display-hero {
-  font-size: clamp(36px, 6.5vw, 72px);
+  font-size: clamp(32px, 5vw, 56px);
   max-width: 16ch;
 }
 
@@ -1102,7 +1102,7 @@ p {
 }
 
 .section-head h2 {
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(32px, 5vw, 56px);
 }
 
 .strip {
@@ -1396,7 +1396,7 @@ p {
 }
 
 .orbit-title {
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(32px, 5vw, 56px);
   margin-bottom: 32px;
 }
 
@@ -1895,7 +1895,7 @@ p {
 }
 
 .faq-intro .display {
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(32px, 5vw, 56px);
   margin: 12px 0 18px;
 }
 
@@ -3144,7 +3144,7 @@ p {
 
 .page-mast-copy .display {
   color: #f7f3ea;
-  font-size: clamp(40px, 7vw, 80px);
+  font-size: clamp(32px, 5vw, 56px);
   max-width: 14ch;
 }
 

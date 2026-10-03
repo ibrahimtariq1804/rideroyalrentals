@@ -157,38 +157,8 @@ export function HomeFaq() {
 }
 
 export function Newsletter() {
-  const [done, setDone] = useState(false)
   return (
     <section className="section" aria-labelledby="news-heading">
-      <Container>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 40, alignItems: 'end' }}>
-          <div>
-            <p className="kicker">Travel alerts</p>
-            <h2 id="news-heading" className="display" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
-              Route notes, not noise.
-            </h2>
-            <p style={{ color: 'var(--text-dim)', marginTop: 12, maxWidth: '46ch' }}>
-              Optional updates when a number and mailing setup exist. Until then this stays a local
-              acknowledgement — we will not pretend a list was saved on a server.
-            </p>
-          </div>
-          {done ? (
-            <p className="notice">Noted in this browser only. Connect an endpoint later to collect addresses.</p>
-          ) : (
-            <form
-              className="field"
-              onSubmit={(event) => {
-                event.preventDefault()
-                setDone(true)
-              }}
-            >
-              <label htmlFor="news-email">Email</label>
-              <input id="news-email" type="email" required placeholder="name@company.com" />
-              <Button type="submit">Notify me</Button>
-            </form>
-          )}
-        </div>
-      </Container>
       <div style={{ marginTop: 64 }}>
         <Marquee
           items={['Alto', 'City', 'Civic', 'Corolla', 'Altis', 'BRV', 'Revo', 'Vigo', 'Tucson', 'Sportage', 'Sorento', 'Prado', 'Land Cruiser', 'Crown RS', 'Hiace', 'Coaster']}

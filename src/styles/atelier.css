@@ -79,7 +79,7 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(48px, 9vw, 104px);
+  font-size: clamp(32px, 5vw, 56px);
   line-height: 0.9;
   letter-spacing: -0.04em;
   text-transform: uppercase;
@@ -741,7 +741,7 @@
 }
 
 .atelier-empty .atelier-display {
-  font-size: clamp(36px, 6vw, 64px);
+  font-size: clamp(32px, 5vw, 56px);
   color: var(--text-strong);
 }
 
@@ -790,7 +790,7 @@
 
 .atelier-vehicle-intro .atelier-display {
   max-width: 14ch;
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(32px, 5vw, 56px);
 }
 
 .atelier-vehicle-rate {
