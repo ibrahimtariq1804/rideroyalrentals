@@ -3548,13 +3548,13 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px 24px;
-  gap: 12px;
+  padding: 16px;
+  gap: 8px;
 }
 
 .mobile-link {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
   text-decoration: none;
   opacity: 0;
@@ -3577,13 +3577,14 @@ p {
 
 .mobile-link-text {
   font-family: var(--font-display);
-  font-size: clamp(32px, 8vw, 48px);
-  line-height: 1.1;
+  font-size: clamp(24px, 7vw, 40px);
+  line-height: 1;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.02em;
   color: var(--text-dim);
   transition: color 0.3s ease, -webkit-text-stroke 0.3s ease;
+  word-break: break-word;
 }
 
 .mobile-link:hover .mobile-link-text,
