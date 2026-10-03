@@ -3622,7 +3622,6 @@ p {
 
 
 /* Force dark-mode text colors on components that have hardcoded dark backgrounds in Light Theme */
-[data-theme='light'] .bento-card,
 [data-theme='light'] .cta-pane-copy,
 [data-theme='light'] .story-copy,
 [data-theme='light'] .atelier-hero,
@@ -3633,9 +3632,6 @@ p {
   --text-strong: #fff;
   color: var(--text-strong);
 }
-
-[data-theme='light'] .bento-title,
-[data-theme='light'] .bento-meta p,
 [data-theme='light'] .cta-pane-copy h2,
 [data-theme='light'] .cta-pane-copy p,
 [data-theme='light'] .story-copy h2,
@@ -3644,10 +3640,22 @@ p {
 [data-theme='light'] .atelier-lede {
   color: var(--text-strong);
 }
-[data-theme='light'] .bento-meta p,
 [data-theme='light'] .cta-pane-copy p,
 [data-theme='light'] .story-copy p,
 [data-theme='light'] .atelier-lede {
   color: var(--text);
+}
+
+
+
+[data-theme='light'] .bento-card:not(.is-feature) {
+  --text: #f4efe6;
+  --text-dim: #a8a297;
+  --text-strong: #fff;
+  color: var(--text-strong);
+}
+[data-theme='light'] .bento-card:not(.is-feature) .bento-title,
+[data-theme='light'] .bento-card:not(.is-feature) .bento-meta p {
+  color: var(--text-strong);
 }
 
