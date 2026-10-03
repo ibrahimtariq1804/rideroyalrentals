@@ -149,20 +149,38 @@ export function Header() {
             </button>
           </div>
         </div>
-        <nav>
-          {links.map((link) => (
-            <NavLink key={link.to} to={link.to} end={link.to === '/'} onClick={() => setOpen(false)}>
-              {link.label}
+        <nav className="mobile-nav-links">
+          {links.map((link, i) => (
+            <NavLink 
+              key={link.to} 
+              to={link.to} 
+              end={link.to === '/'} 
+              onClick={() => setOpen(false)}
+              className="mobile-link"
+              style={{ transitionDelay: `${0.1 + i * 0.04}s` }}
+            >
+              <span className="mobile-link-num">0{i + 1}</span>
+              <span className="mobile-link-text">{link.label}</span>
             </NavLink>
           ))}
           {whatsAppHref ? (
-            <a href={whatsAppHref} target="_blank" rel="noreferrer">
-              WhatsApp
+            <a 
+              href={whatsAppHref} 
+              target="_blank" 
+              rel="noreferrer"
+              className="mobile-link mobile-link-wa"
+              style={{ transitionDelay: `${0.1 + links.length * 0.04}s` }}
+            >
+              <span className="mobile-link-num">WA</span>
+              <span className="mobile-link-text">WhatsApp</span>
             </a>
           ) : (
             <span className="meta">WhatsApp unset</span>
           )}
         </nav>
+        <div className="mobile-nav-footer">
+          <p>Managed by <a href="https://lazyfoxxes.com" target="_blank" rel="noreferrer">Lazyfoxxes.com</a></p>
+        </div>
       </div>
     </>
   )
