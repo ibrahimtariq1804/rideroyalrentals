@@ -1006,3 +1006,7 @@
 
 .bento-card.is-feature .bento-media img { object-fit: contain; transform: scale(0.85); }
 
+
+select option { background-color: var(--bg-panel); color: var(--text-strong); }
+.bento-card .bento-media img { object-fit: contain; transform: scale(0.85); }
+
