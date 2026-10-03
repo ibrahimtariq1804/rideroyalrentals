@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
 import { business } from '@/data/business'
 import { services } from '@/data/services'
 import { Container } from '@/components/ui/Primitives'
@@ -49,16 +49,16 @@ export function Footer() {
             ) : null}
           </div>
         </div>
-        <div className="footer-bottom">
+                <div className="footer-bottom" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
           <span>
-            LX 600 model: {business.modelCredit.creator} · {business.modelCredit.license}
+            &copy; {new Date().getFullYear()} {business.name}. All rights reserved.
           </span>
-          <a href={business.modelCredit.source} target="_blank" rel="noreferrer">
-            Sketchfab source
-          </a>
-          <span>Photography credited on the About page</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            Managed by <a href="https://lazyfoxxes.com" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline', color: 'var(--accent)', fontWeight: 600 }}>Lazyfoxxes</a>
+          </span>
         </div>
       </Container>
     </footer>
   )
 }
+
