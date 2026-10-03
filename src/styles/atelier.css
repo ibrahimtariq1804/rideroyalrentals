@@ -1004,9 +1004,25 @@
   }
 }
 
-.bento-card.is-feature .bento-media img { object-fit: contain; transform: scale(0.85); }
-
+.bento-card.is-feature .bento-media img {
+  object-fit: contain;
+  width: 75%;
+  height: 75%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 select option { background-color: var(--bg-panel); color: var(--text-strong); }
-.bento-card .bento-media img { object-fit: contain; transform: scale(0.85); }
+
+.bento-card .bento-media img {
+  object-fit: contain;
+  width: 75%;
+  height: 75%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
