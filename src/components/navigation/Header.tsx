@@ -14,6 +14,16 @@ const links = [
   { to: '/contact', label: 'Contact' },
 ]
 
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style={{ overflow: 'visible' }}>
+      <line x1="4" y1="8" x2="20" y2="8" stroke="currentColor" strokeWidth="1.5" style={{ transformOrigin: '12px 12px', transform: open ? 'translateY(4px) rotate(45deg)' : 'none', transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }} />
+      <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" strokeWidth="1.5" style={{ opacity: open ? 0 : 1, transition: 'opacity 0.4s ease' }} />
+      <line x1="4" y1="16" x2={open ? "20" : "14"} y2="16" stroke="currentColor" strokeWidth="1.5" style={{ transformOrigin: '12px 12px', transform: open ? 'translateY(-4px) rotate(-45deg)' : 'none', transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }} />
+    </svg>
+  )
+}
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -102,9 +112,7 @@ export function Header() {
               onClick={() => setOpen(true)}
             >
               <span className="sr-only">Open menu</span>
-              <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true">
-                <path d="M0 1h18M0 6h18M0 11h12" stroke="currentColor" strokeWidth="1.2" />
-              </svg>
+              <MenuIcon open={open} />
             </button>
           </div>
         </div>
@@ -137,7 +145,7 @@ export function Header() {
             <ThemeToggle />
             <button ref={closeRef} className="menu-toggle" type="button" onClick={() => setOpen(false)}>
               <span className="sr-only">Close menu</span>
-              Close
+              <MenuIcon open={open} />
             </button>
           </div>
         </div>

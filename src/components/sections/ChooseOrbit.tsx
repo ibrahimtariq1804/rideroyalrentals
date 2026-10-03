@@ -88,7 +88,7 @@ export function ChooseOrbit() {
     if (!dragging.current) return
     const dx = event.clientX - lastX.current
     lastX.current = event.clientX
-    velocity.current = -dx * 0.004
+    velocity.current = dx * 0.004
     rotation.current += velocity.current
     applySpin()
   }
