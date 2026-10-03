@@ -615,26 +615,11 @@ p {
   pointer-events: auto;
 }
 
-.mobile-nav nav {
-  display: grid;
-  align-content: center;
-  padding: 24px;
-  gap: 8px;
-}
 
-.mobile-nav a {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 10vw, 72px);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  color: var(--text-dim);
-}
 
-.mobile-nav a[aria-current='page'],
-.mobile-nav a.active {
-  color: var(--text);
-}
+
+
+
 
 .page-main {
   padding-top: 0;
@@ -3622,4 +3607,5 @@ p {
   color: var(--text);
   text-decoration: none;
 }
+
 
