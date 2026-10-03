@@ -110,8 +110,14 @@ export function Header() {
         </div>
       </header>
 
-      <div className="header-marquee" style={{ position: 'fixed', top: 'var(--header)', left: 0, right: 0, zIndex: 39, background: 'var(--accent)', color: 'var(--bg-ink)', opacity: 0.9 }}>
-        <Marquee items={[`Any question? Get in touch on WhatsApp: ${business.whatsAppNumber}`, `Any question? Get in touch on WhatsApp: ${business.whatsAppNumber}`, `Any question? Get in touch on WhatsApp: ${business.whatsAppNumber}`]} />
+      <div className="header-marquee" style={{ position: 'fixed', top: 'var(--header)', left: 0, right: 0, zIndex: 39, background: 'var(--bg-panel)', borderBottom: '1px solid var(--line-strong)' }}>
+        <Marquee items={[
+          '✦', 'PREMIUM CHAUFFEUR SERVICES', 
+          '✦', 'INSTANT BOOKING VIA WHATSAPP', 
+          '✦', `24/7 SUPPORT: ${business.whatsAppNumber}`, 
+          '✦', 'LUXURY FLEET AVAILABLE NOW',
+          '✦', 'NO HIDDEN FEES'
+        ]} />
       </div>
 
       <div
