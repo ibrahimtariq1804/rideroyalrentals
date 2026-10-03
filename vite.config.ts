@@ -1,12 +1,12 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import path from 'path'
 
-// Absolute alias avoids Vite 8 / rolldown config-bundler bug with fileURLToPath/URL.
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': 'C:/Users/HP/Projects/vanta-drive/src',
+      '@': path.resolve(process.cwd(), 'src'),
     },
   },
   assetsInclude: ['**/*.glb'],
