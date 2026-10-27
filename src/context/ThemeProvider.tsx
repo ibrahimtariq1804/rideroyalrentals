@@ -27,14 +27,14 @@ function readStoredTheme(): Theme {
   } catch {
     /* private mode */
   }
-  return 'dark'
+  return 'light'
 }
 
 function applyTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme
   document.documentElement.style.colorScheme = theme
   const meta = document.querySelector('meta[name="theme-color"]')
-  if (meta) meta.setAttribute('content', theme === 'light' ? '#e6e2da' : '#070708')
+  if (meta) meta.setAttribute('content', theme === 'light' ? '#ffffff' : '#070708')
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

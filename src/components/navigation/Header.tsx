@@ -1,7 +1,9 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
+import { Phone, MessageCircle } from 'lucide-react'
 import { business, isWhatsAppConfigured } from '@/data/business'
 import { useLenis } from '@/context/LenisProvider'
+import { useTheme } from '@/context/ThemeProvider'
 import { ThemeToggle } from '@/components/navigation/ThemeToggle'
 import { Marquee } from '@/components/animation/MotionBits'
 
@@ -33,6 +35,9 @@ export function Header() {
   const solid = location.pathname !== '/'
 
   const lenis = useLenis()
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
+  const logoSrc = isDark ? '/brand/logo-full.webp' : '/brand/logo-dark.png'
 
   useEffect(() => {
     const read = () => setScrolled((lenis?.scroll ?? window.scrollY) > 24)
@@ -65,8 +70,9 @@ export function Header() {
     }
   }, [open])
 
+  const cleanPhone = business.whatsAppNumber.replace(/[^\d]/g, '')
   const whatsAppHref = isWhatsAppConfigured
-    ? `https://wa.me/${business.whatsAppNumber.replace(/[^\d]/g, '')}`
+    ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hello Ride Royal Rentals! I would like to inquire about car rental availability.')}`
     : undefined
 
   return (
@@ -76,33 +82,47 @@ export function Header() {
           <NavLink to="/" className="logo" aria-label={`${business.name} home`}>
             <img
               className="logo-img"
-              src="/brand/logo-full.webp"
+              src={logoSrc}
               alt={business.name}
-              width={180}
+              width={190}
               height={48}
               onError={(e) => {
-                e.currentTarget.src = '/brand/logo-full.png'
+                e.currentTarget.src = isDark ? '/brand/logo-full.png' : '/brand/logo-dark.png'
               }}
             />
           </NavLink>
+
           <nav className="nav-desktop" aria-label="Primary">
             {links.map((link) => (
               <NavLink key={link.to} to={link.to} end={link.to === '/'}>
                 {link.label}
               </NavLink>
             ))}
+
+            <a href={`tel:${business.whatsAppNumber}`} className="nav-call-link" title="Call directly">
+              <Phone size={14} />
+              <span>0321 5373563</span>
+            </a>
+
             {whatsAppHref ? (
-              <a href={whatsAppHref} target="_blank" rel="noreferrer">
-                WhatsApp
+              <a href={whatsAppHref} target="_blank" rel="noreferrer" className="nav-wa-badge">
+                <MessageCircle size={15} />
+                <span>WhatsApp</span>
               </a>
-            ) : (
-              <span className="meta" title="Set VITE_WHATSAPP_NUMBER to enable">
-                WhatsApp
-              </span>
-            )}
+            ) : null}
+
             <ThemeToggle />
           </nav>
+
           <div className="header-actions">
+            <a href={`tel:${business.whatsAppNumber}`} className="mobile-header-call" aria-label="Call Ride Royal Rentals">
+              <Phone size={18} />
+            </a>
+            {whatsAppHref ? (
+              <a href={whatsAppHref} target="_blank" rel="noreferrer" className="mobile-header-wa" aria-label="WhatsApp Ride Royal Rentals">
+                <MessageCircle size={18} />
+              </a>
+            ) : null}
             <ThemeToggle className="theme-toggle-mobile" />
             <button
               className="menu-toggle"
@@ -118,7 +138,7 @@ export function Header() {
         </div>
       </header>
 
-      <div className="header-marquee" style={{ position: 'fixed', top: 'var(--header)', left: 0, right: 0, zIndex: 39, background: 'var(--bg-panel)', borderBottom: '1px solid var(--line-strong)' }}>
+      <div className="header-marquee" style={{ position: 'fixed', top: 'var(--header)', left: 0, right: 0, height: 'var(--marquee-h, 36px)', zIndex: 39, background: 'var(--bg-panel)', borderBottom: '1px solid var(--line-strong)', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
         <Marquee items={[
           '✦', 'PREMIUM CHAUFFEUR SERVICES', 
           '✦', 'INSTANT BOOKING VIA WHATSAPP', 
@@ -139,7 +159,7 @@ export function Header() {
       >
         <div className="header-inner">
           <span className="logo">
-            <img className="logo-img" src="/brand/logo-full.webp" alt={business.name} width={160} height={42} />
+            <img className="logo-img" src={logoSrc} alt={business.name} width={160} height={42} />
           </span>
           <div className="header-actions">
             <ThemeToggle />

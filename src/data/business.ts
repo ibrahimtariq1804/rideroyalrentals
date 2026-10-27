@@ -1,8 +1,9 @@
 export const business = {
-  name: import.meta.env.VITE_BUSINESS_NAME || 'RIDEROYALRENTALS',
+  name: import.meta.env.VITE_BUSINESS_NAME || 'Ride Royal Rentals',
   tagline: 'Rent without compromise.',
   market: 'Pakistan',
-  whatsAppNumber: '+923354262912',
+  whatsAppNumber: '+923215373563',
+  phoneDisplay: '0321 5373563',
   bookingEndpoint: import.meta.env.VITE_BOOKING_ENDPOINT || '',
   mapsUrl: import.meta.env.VITE_GOOGLE_MAPS_URL || '',
   instagramUrl: import.meta.env.VITE_INSTAGRAM_URL || '',

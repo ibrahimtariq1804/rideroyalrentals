@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { Suspense } from 'react'
 import { Header } from '@/components/navigation/Header'
 import { Footer } from '@/components/navigation/Footer'
+import { FloatingContact } from '@/components/ui/FloatingContact'
 import { PageLoader } from '@/components/ui/WheelLoader'
 import { PageFade } from '@/components/animation/MotionBits'
 
@@ -23,6 +24,7 @@ export function SiteLayout() {
         </Suspense>
       </main>
       <Footer />
+      <FloatingContact />
     </>
   )
 }
