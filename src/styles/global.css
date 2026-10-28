@@ -4152,12 +4152,14 @@ p {
   margin: 10px 0;
   overflow: hidden;
   text-decoration: none;
+  border-radius: 12px;
 }
 .car-card-image-link img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   transition: transform 0.3s;
+  border-radius: 8px;
 }
 .simple-car-card:hover .car-card-image-link img {
   transform: scale(1.05);
