@@ -3,8 +3,6 @@ import { useEffect, useRef, useState } from 'react'
 import { Phone, MessageCircle } from 'lucide-react'
 import { business, isWhatsAppConfigured } from '@/data/business'
 import { useLenis } from '@/context/LenisProvider'
-import { useTheme } from '@/context/ThemeProvider'
-import { ThemeToggle } from '@/components/navigation/ThemeToggle'
 import { Marquee } from '@/components/animation/MotionBits'
 
 const links = [
@@ -35,9 +33,7 @@ export function Header() {
   const solid = location.pathname !== '/'
 
   const lenis = useLenis()
-  const { theme } = useTheme()
-  const isDark = theme === 'dark'
-  const logoSrc = isDark ? '/brand/logo-full.webp' : '/brand/logo-dark.png'
+  const logoSrc = '/brand/logo-dark.png'
 
   useEffect(() => {
     const read = () => setScrolled((lenis?.scroll ?? window.scrollY) > 24)
@@ -87,7 +83,7 @@ export function Header() {
               width={190}
               height={48}
               onError={(e) => {
-                e.currentTarget.src = isDark ? '/brand/logo-full.png' : '/brand/logo-dark.png'
+                e.currentTarget.src = '/brand/logo-dark.png'
               }}
             />
           </NavLink>
@@ -110,8 +106,6 @@ export function Header() {
                 <span>WhatsApp</span>
               </a>
             ) : null}
-
-            <ThemeToggle />
           </nav>
 
           <div className="header-actions">
@@ -123,7 +117,6 @@ export function Header() {
                 <MessageCircle size={18} />
               </a>
             ) : null}
-            <ThemeToggle className="theme-toggle-mobile" />
             <button
               className="menu-toggle"
               type="button"
@@ -138,7 +131,7 @@ export function Header() {
         </div>
       </header>
 
-      <div className="header-marquee" style={{ position: 'fixed', top: 'var(--header)', left: 0, right: 0, height: 'var(--marquee-h, 36px)', zIndex: 39, background: 'var(--bg-panel)', borderBottom: '1px solid var(--line-strong)', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
+      <div className="header-marquee">
         <Marquee items={[
           '✦', 'PREMIUM CHAUFFEUR SERVICES', 
           '✦', 'INSTANT BOOKING VIA WHATSAPP', 
@@ -162,7 +155,6 @@ export function Header() {
             <img className="logo-img" src={logoSrc} alt={business.name} width={160} height={42} />
           </span>
           <div className="header-actions">
-            <ThemeToggle />
             <button ref={closeRef} className="menu-toggle" type="button" onClick={() => setOpen(false)}>
               <span className="sr-only">Close menu</span>
               <MenuIcon open={open} />

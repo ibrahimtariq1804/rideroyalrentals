@@ -12,16 +12,9 @@
       content="Ride Royal Rentals — Best rent a car service in Islamabad & Rawalpindi. Self-drive, chauffeur service, 24/7 airport pick & drop, wedding cars, and northern area tours at unbeatable daily rates."
     />
     <script>
-      (function () {
-        try {
-          var t = localStorage.getItem('rrr-theme')
-          if (t !== 'light' && t !== 'dark') t = 'light'
-          document.documentElement.dataset.theme = t
-          document.documentElement.style.colorScheme = t
-        } catch (e) {
-          document.documentElement.dataset.theme = 'light'
-        }
-      })()
+      document.documentElement.dataset.theme = 'light';
+      document.documentElement.style.colorScheme = 'light';
+      try { localStorage.setItem('rrr-theme', 'light'); } catch (e) {}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

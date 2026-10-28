@@ -4,7 +4,6 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
   type ReactNode,
 } from 'react'
 
@@ -20,16 +19,6 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
-function readStoredTheme(): Theme {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    if (stored === 'light' || stored === 'dark') return stored
-  } catch {
-    /* private mode */
-  }
-  return 'light'
-}
-
 function applyTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme
   document.documentElement.style.colorScheme = theme
@@ -38,27 +27,19 @@ function applyTheme(theme: Theme) {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof document !== 'undefined') {
-      const attr = document.documentElement.dataset.theme
-      if (attr === 'light' || attr === 'dark') return attr
-    }
-    return readStoredTheme()
-  })
+  const theme: Theme = 'light'
 
   useEffect(() => {
-    applyTheme(theme)
+    applyTheme('light')
     try {
-      localStorage.setItem(STORAGE_KEY, theme)
+      localStorage.setItem(STORAGE_KEY, 'light')
     } catch {
       /* ignore */
     }
-  }, [theme])
-
-  const setTheme = useCallback((next: Theme) => setThemeState(next), [])
-  const toggleTheme = useCallback(() => {
-    setThemeState((prev) => (prev === 'dark' ? 'light' : 'dark'))
   }, [])
+
+  const setTheme = useCallback(() => {}, [])
+  const toggleTheme = useCallback(() => {}, [])
 
   const value = useMemo(
     () => ({
@@ -66,7 +47,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       setTheme,
       toggleTheme,
     }),
-    [theme, setTheme, toggleTheme],
+    [setTheme, toggleTheme],
   )
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>

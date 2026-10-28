@@ -48,7 +48,7 @@ export function SimpleHero() {
           <div className="simple-hero-content">
             <div className="hero-badge">
               <span className="hero-badge-dot" />
-              <span>#1 Rated Car Rental in Islamabad & Rawalpindi</span>
+              <span>#1 Car Rental · Islamabad & Rawalpindi</span>
             </div>
 
             <h1 className="simple-hero-title">
